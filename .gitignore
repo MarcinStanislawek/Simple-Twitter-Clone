@@ -85,3 +85,4 @@ out\
 .idea\
 artifacts\
 SimpleTwitterClone.iml
+src/resources/META-INF/persistence.xml
