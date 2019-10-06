@@ -85,4 +85,5 @@ out\
 .idea\
 artifacts\
 SimpleTwitterClone.iml
-src/resources/META-INF/persistence.xml
+src\resources\META-INF\persistence.xml
+src\main\java\TestMain.java
