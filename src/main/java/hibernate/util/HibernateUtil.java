@@ -48,4 +48,8 @@ public class HibernateUtil {
         entityManager.remove(toRemove);
         entityManager.getTransaction().commit();
     }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
 }
