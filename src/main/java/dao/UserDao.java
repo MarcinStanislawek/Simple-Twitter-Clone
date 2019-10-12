@@ -31,10 +31,15 @@ public class UserDao extends AbstractDao {
         return query.setParameter("name", name).getResultList();
     }
 
-    public boolean isUserValid(String login, String passowrd) {
+    public List<User> getAllUsers() {
+        TypedQuery<User> query = entityManager.createQuery("select u from User u", User.class);
+        return query.getResultList();
+    }
+
+    public boolean isUserValid(String login, String password) {
         Query query = entityManager.createQuery("select count(*) as cnt from User u where u.login = :login and u.password = :password");
         query.setParameter("login", login);
-        query.setParameter("password", passowrd);
+        query.setParameter("password", password);
         Object singleResult = query.getSingleResult();
         return ((Long) singleResult > 0) ? true : false;
     }
@@ -66,7 +71,7 @@ public class UserDao extends AbstractDao {
     }
 
     public void unFollow(String currentUserLogin, String userToUnFollowLogin) {
-        if(currentUserLogin != userToUnFollowLogin) {
+        if (currentUserLogin != userToUnFollowLogin) {
             User currentUser = getUserByLogin(currentUserLogin);
             User userToUnFollow = getUserByLogin(userToUnFollowLogin);
             currentUser.getFollows().remove(userToUnFollow);
