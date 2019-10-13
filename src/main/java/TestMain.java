@@ -1,17 +1,23 @@
+import dao.UserDao;
 import hibernate.util.HibernateUtil;
 import model.User;
+
+import java.util.Date;
 
 public class TestMain {
     public static void main(String[] args) {
         HibernateUtil hibernateUtil = HibernateUtil.getInstance();
-        User user = new User.UserBuilder()
-                .buildName("Marcin")
-                .buildLastName("Stanisławek")
-                .buildLogin("Marcyn")
-                .buildEmail("dupa@wp.pl")
-                .buildPassword("pass")
-                .buildUser();
+        UserDao userDao = new UserDao();
 
-        hibernateUtil.save(user);
+        for (int i = 0; i < 20; i++) {
+            User user = new User();
+            user.setDateOfRegistration(new Date());
+            user.setLogin("Login" + i);
+            user.setName("Name" + i);
+            user.setLastName("Lastname" + i);
+            user.setPassword("pass");
+            user.setEmail("asd" + i + "@wp.pl");
+            userDao.saveUser(user);
+        }
     }
 }

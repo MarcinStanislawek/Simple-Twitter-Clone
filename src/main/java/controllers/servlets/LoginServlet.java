@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static controllers.servlets.utils.ServletUtils.LOGIN;
+
 @WebServlet(name = "loginServlet", urlPatterns = {"", "/login"})
 public class LoginServlet extends HttpServlet {
+
     private final String PASSWORD = "password";
-    private final String LOGIN = "login";
     private final String REMEMBER = "remember";
     private final String LOGIN_COOKIE = "twitter_login";
     private final String PASSWORD_COOKIE = "twitter_password";

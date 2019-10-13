@@ -4,6 +4,7 @@ import dao.UserDao;
 import model.User;
 
 import javax.persistence.NoResultException;
+import java.util.Date;
 
 public class UserService {
     public static final String EMAIL_ERROR = "Email is already in use.";
@@ -25,6 +26,7 @@ public class UserService {
         } else if (isUserEmailExist(user.getEmail())) {
             return EMAIL_ERROR;
         } else {
+            user.setDateOfRegistration(new Date());
             userDao.saveUser(user);
             return SUCCESS;
         }

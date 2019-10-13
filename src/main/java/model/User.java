@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,6 +37,9 @@ public class User {
 
     @ManyToMany(mappedBy = "follows")
     private Set<User> followed = new HashSet<>();
+
+    @Column(name = "date_of_registration")
+    private Date dateOfRegistration;
 
     public User() {
     }
@@ -104,6 +108,14 @@ public class User {
         this.followed = followed;
     }
 
+    public Date getDateOfRegistration() {
+        return dateOfRegistration;
+    }
+
+    public void setDateOfRegistration(Date dateOfRegistration) {
+        this.dateOfRegistration = dateOfRegistration;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -120,29 +132,41 @@ public class User {
 
     public static class UserBuilder {
         User user = new User();
-        public UserBuilder(){
+
+        public UserBuilder() {
         }
+
         public UserBuilder buildLogin(String login) {
             user.setLogin(login);
             return this;
         }
+
         public UserBuilder buildEmail(String email) {
             user.setEmail(email);
             return this;
         }
+
         public UserBuilder buildName(String name) {
             user.setName(name);
             return this;
         }
+
         public UserBuilder buildLastName(String lastName) {
             user.setLastName(lastName);
             return this;
         }
+
         public UserBuilder buildPassword(String password) {
             user.setPassword(password);
             return this;
         }
-        public User buildUser(){
+
+        public UserBuilder buildDateOfRegistration(Date dateOfRegistration) {
+            user.setDateOfRegistration(dateOfRegistration);
+            return this;
+        }
+
+        public User buildUser() {
             return this.user;
         }
     }
