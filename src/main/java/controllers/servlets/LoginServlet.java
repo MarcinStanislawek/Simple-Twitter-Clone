@@ -10,15 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static controllers.servlets.utils.ServletUtils.LOGIN;
+import static controllers.servlets.utils.ServletUtils.*;
 
 @WebServlet(name = "loginServlet", urlPatterns = {"", "/login"})
 public class LoginServlet extends HttpServlet {
 
     private final String PASSWORD = "password";
     private final String REMEMBER = "remember";
-    private final String LOGIN_COOKIE = "twitter_login";
-    private final String PASSWORD_COOKIE = "twitter_password";
     private final int SECONDS_IN_DAY = 60 * 60 * 24;
     private final String CHECKBOX_SELECTED = "on";
     private UserDao userDao;
@@ -59,6 +57,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF8");
         String login = req.getParameter(LOGIN);
         String password = req.getParameter(PASSWORD);
         String remember = req.getParameter(REMEMBER);

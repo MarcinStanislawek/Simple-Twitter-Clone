@@ -3,6 +3,7 @@ package controllers.servlets;
 import dao.UserDao;
 import model.User;
 import services.UserService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +34,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF8");
         String login = req.getParameter(LOGIN);
         String password = req.getParameter(PASSWORD);
         String username = req.getParameter(USERNAME);
