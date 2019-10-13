@@ -36,10 +36,10 @@
                     <strong class="d-block text-gray-dark">${followedUser.login}</strong>
                     <strong class="d-block text-gray-dark">${followedUser.name}</strong>
                     <strong class="d-block text-gray-dark">
-                        On sparrow since :
+                        On twitter since:
                         <fmt:formatDate value="${followedUser.dateOfRegistration}"
-                                        pattern="yyyy-MM-dd HH-mm"/> </strong>
-                    <a href="unfollow?userLoginToUnfollow=${followedUser.login}"><b>Unfollow</b></a>
+                                        pattern="yyyy-MM-dd"/> </strong>
+                    <a href="unfollow?userLoginToUnFollow=${followedUser.login}"><b>Unfollow</b></a>
                 </p>
             </div>
         </c:forEach>
@@ -54,9 +54,8 @@
                     <strong class="d-block text-gray-dark">${notFollowedUser.login}</strong>
                     <strong class="d-block text-gray-dark">${notFollowedUser.name}</strong>
                     <strong class="d-block text-gray-dark">
-                        On sparrow since :
+                        On twitter since:
                         <fmt:formatDate value="${notFollowedUser.dateOfRegistration}" pattern="yyyy-MM-dd"/> </strong>
-                    </br>
                     <a href="follow?userLoginToFollow=${notFollowedUser.login}"><b>Follow</b></a>
                 </p>
             </div>

@@ -56,15 +56,15 @@ public class UserDao extends AbstractDao {
         query.setParameter("login", login);
         //TODO implement query with left join relation to follows_followed table
         List<User> users = query.getResultList();
-        List<User> followedUsers = getUserByName(login);
+        List<User> followedUsers = getFollowedUsers(login);
         users.removeAll(followedUsers);
         return users;
     }
 
-    public void follow(String currentUserLogin, String userToFollowLogin) {
-        if (currentUserLogin != userToFollowLogin) {
+    public void follow(String currentUserLogin, String userLoginToFollow) {
+        if (currentUserLogin != userLoginToFollow) {
             User currentUser = getUserByLogin(currentUserLogin);
-            User userToFollow = getUserByLogin(userToFollowLogin);
+            User userToFollow = getUserByLogin(userLoginToFollow);
             currentUser.getFollows().add(userToFollow);
             saveUser(currentUser);
         }
