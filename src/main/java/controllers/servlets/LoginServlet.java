@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF8");
-        String login = req.getParameter(LOGIN);
+        String login = req.getParameter(LOGIN).toUpperCase();
         String password = req.getParameter(PASSWORD);
         String remember = req.getParameter(REMEMBER);
 
